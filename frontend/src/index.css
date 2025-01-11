@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --primary: 230 75% 55%;
+    --primary-focus: 230 62% 49%;
+    --primary-foreground: 0 0% 100%;
+
+    --wpp: 125 53% 55%;
+    --wpp-focus: 125 59% 43%;
+    --wpp-foreground: 0 0% 100%;
+
+    --muted: 0 0% 90%;
+    --muted-medium: 0 0% 40%;
+    --muted-low: 0 0% 20%;
+
+    --radius: 50px;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-background text-foreground w-screen min-h-screen;
+  }
+}
