@@ -5,7 +5,7 @@ import { Separator } from "./ui/separator"
 export function Header() {
   return (
     <header className='flex w-full items-center justify-center bg-card py-6 text-card-foreground drop-shadow-md'>
-      <div className='flex w-full items-center justify-center xl:max-w-4xl xl:justify-between 2xl:max-w-5xl'>
+      <div className='container flex w-full items-center justify-center xl:justify-between'>
         <div className='flex items-center gap-x-6'>
           <Icons.DealerIcon className='h-8 w-40' />
           <Separator orientation='vertical' className='h-8' />
