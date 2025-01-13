@@ -1,11 +1,15 @@
 import { ArrowUp, ExternalLink } from "lucide-react"
 import { Icons } from "./icons"
 import { Separator } from "./ui/separator"
+import { useOneCompany } from "@/hooks/use-company"
+import { Skeleton } from "./ui/skeleton"
 
 export function Footer() {
   const scrollToPageTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
+
+  const { company, isLoading } = useOneCompany("1") // Passing the id of 1 as mock
 
   return (
     <footer className='dark flex w-full items-center justify-center bg-background py-10 text-foreground'>
@@ -44,17 +48,28 @@ export function Footer() {
         <section className='w-full space-y-4 text-left'>
           <div className='flex w-full items-center gap-4'>
             <h1 className='font-bold'>Razão Social:</h1>
-            <span>AUTO FORCE PLATAFORMA DE MARKETING DIGITAL LTDA</span>
+            {isLoading ? (
+              <Skeleton className='h-3 w-full' />
+            ) : (
+              <span>{company?.company_name}</span>
+            )}
           </div>
           <div className='flex items-center gap-4'>
             <h1 className='font-bold'>CNPJ:</h1>
-            <span>22.588.947/0001-06</span>
+            {isLoading ? (
+              <Skeleton className='h-3 w-full' />
+            ) : (
+              <span>{company?.cnpj}</span>
+            )}
           </div>
           <div className='flex w-full flex-col items-center justify-start gap-4 md:flex-row xl:text-nowrap'>
             <h1 className='w-full font-bold md:w-fit'>Endereço Matriz:</h1>
-            <span className='block'>
-              Av. Prudente de Morais, 3966, Lagoa Nova. Natal/RN – CEP 59056-200
-            </span>
+
+            {isLoading ? (
+              <Skeleton className='h-3 w-full' />
+            ) : (
+              <span className='block'>{company?.address}</span>
+            )}
             <div className='flex w-full items-center gap-2'>
               <a className='flex cursor-pointer items-center underline underline-offset-4'>
                 Ver mapa
