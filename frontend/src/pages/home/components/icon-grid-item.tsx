@@ -1,3 +1,4 @@
+import { Skeleton } from "@/components/ui/skeleton"
 import { ReactNode } from "react"
 
 export function IconGridItem({
@@ -7,14 +8,16 @@ export function IconGridItem({
 }: {
   icon: ReactNode
   title: string
-  description: string
+  description?: string
 }) {
   return (
     <div className='flex items-center justify-center gap-x-4 md:justify-start'>
       {icon}
       <div className='text-base font-bold'>
         <h1>{title}</h1>
-        <span className='text-primary'>{description}</span>
+        {!description && <Skeleton className='h-4 w-full bg-primary/70' />}
+
+        {description && <span className='text-primary'>{description}</span>}
       </div>
     </div>
   )
