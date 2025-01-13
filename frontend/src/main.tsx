@@ -1,13 +1,13 @@
 import "./index.css"
 
-import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { Header } from "@/components/header"
 import { Footer } from "./components/footer"
 import { Home } from "./pages/home"
+import { Providers } from "./components/providers"
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  <Providers>
     <div className='flex min-h-screen flex-col'>
       <Header />
       <main className='flex-grow'>
@@ -15,5 +15,5 @@ createRoot(document.getElementById("root")!).render(
       </main>
       <Footer />
     </div>
-  </StrictMode>,
+  </Providers>,
 )
