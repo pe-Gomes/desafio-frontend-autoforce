@@ -5,12 +5,12 @@ class VehiclesController < ApplicationController
   def index
     @vehicles = Vehicle.all
 
-    render json: @vehicles
+    render json: @vehicles.map { |vehicle| VehiclePresenter.new(vehicle).to_json }
   end
 
   # GET /vehicles/1
   def show
-    render json: @vehicle
+    render json: VehiclePresenter.new(@vehicle).to_json
   end
 
   # POST /vehicles
