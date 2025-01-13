@@ -4,7 +4,7 @@ export const companySchema = z.object({
   id: z.string(),
   company_name: z.string(),
   cnpj: z.string(),
-  adress: z.string(),
+  address: z.string(),
   phone: z.string(),
   whatsapp: z.string(),
   created_at: z.date(),
