@@ -36,6 +36,6 @@
 
 @layer base {
   body {
-    @apply min-h-screen w-screen bg-background font-sans text-foreground;
+    @apply min-h-screen w-screen bg-background font-sans text-foreground antialiased;
   }
 }
