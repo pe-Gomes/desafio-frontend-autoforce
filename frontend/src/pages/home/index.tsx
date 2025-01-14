@@ -11,9 +11,18 @@ import { CarVideo } from "./components/car-video"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useVehicle } from "@/hooks/use-vehicle"
 import { useEffect } from "react"
+import { toast } from "@/hooks/use-toast"
 
 export function Home() {
-  const { vehicle, isLoading } = useVehicle("1")
+  const { vehicle, isLoading, isError } = useVehicle("1")
+
+  if (isError) {
+    toast({
+      title: "Erro",
+      description: "Houve um problema ao carregar, tente novamente.",
+      variant: "destructive",
+    })
+  }
 
   useEffect(() => {
     if (vehicle) {

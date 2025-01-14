@@ -12,9 +12,18 @@ import {
 } from "./ui/dialog"
 import { DialogDescription } from "@radix-ui/react-dialog"
 import { formatPhoneNumber } from "@/lib/format-phone-number"
+import { toast } from "@/hooks/use-toast"
 
 export function Header() {
-  const { company, isLoading } = useOneCompany("1")
+  const { company, isLoading, isError } = useOneCompany("1")
+
+  if (isError) {
+    toast({
+      title: "Erro",
+      description: "Houve um problema ao carregar, tente novamente.",
+      variant: "destructive",
+    })
+  }
 
   return (
     <header className='flex w-full items-center justify-center bg-card py-6 text-card-foreground drop-shadow-md'>
@@ -33,22 +42,24 @@ export function Header() {
                 Ligue agora
               </Button>
             </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>
-                  Ligue para{" "}
-                  <a
-                    className='text-primary underline underline-offset-4'
-                    href={`tel:${company!.phone}`}
-                  >
-                    {formatPhoneNumber(company!.phone)}
-                  </a>
-                </DialogTitle>
-                <DialogDescription>
-                  E fale com um de nossos atendentes agora mesmo!
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
+            {company && (
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>
+                    Ligue para{" "}
+                    <a
+                      className='text-primary underline underline-offset-4'
+                      href={`tel:${company?.phone}`}
+                    >
+                      {formatPhoneNumber(company!.phone)}
+                    </a>
+                  </DialogTitle>
+                  <DialogDescription>
+                    E fale com um de nossos atendentes agora mesmo!
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            )}
           </Dialog>
 
           <a

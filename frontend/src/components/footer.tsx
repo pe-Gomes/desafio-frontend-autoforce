@@ -3,13 +3,22 @@ import { Icons } from "./icons"
 import { Separator } from "./ui/separator"
 import { useOneCompany } from "@/hooks/use-company"
 import { Skeleton } from "./ui/skeleton"
+import { toast } from "@/hooks/use-toast"
 
 export function Footer() {
   const scrollToPageTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const { company, isLoading } = useOneCompany("1") // Passing the id of 1 as mock
+  const { company, isLoading, isError } = useOneCompany("1") // Passing the id of 1 as mock
+
+  if (isError) {
+    toast({
+      title: "Erro",
+      description: "Houve um problema ao carregar, tente novamente.",
+      variant: "destructive",
+    })
+  }
 
   return (
     <footer className='dark flex w-full items-center justify-center bg-background py-10 text-foreground'>
