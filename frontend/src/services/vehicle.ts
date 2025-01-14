@@ -1,4 +1,4 @@
-import { Vehicle } from "@/models/vehicle"
+import type { Vehicle } from "@/models/vehicle"
 import { api } from "."
 
 export async function getVehicleById(id: string) {

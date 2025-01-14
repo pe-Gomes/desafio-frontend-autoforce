@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 import { QueryClientProvider, QueryClient } from "react-query"
 
 const queryClient = new QueryClient({
