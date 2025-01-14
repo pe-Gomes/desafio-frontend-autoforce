@@ -23,6 +23,9 @@
     --muted-low: 0 0% 20%;
 
     --radius: 50px;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
   }
 
   .dark {
