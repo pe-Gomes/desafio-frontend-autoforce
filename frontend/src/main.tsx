@@ -5,6 +5,7 @@ import { Header } from "@/components/header"
 import { Footer } from "./components/footer"
 import { Home } from "./pages/home"
 import { Providers } from "./components/providers"
+import { Toaster } from "./components/ui/toaster"
 
 createRoot(document.getElementById("root")!).render(
   <Providers>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
         <Home />
       </main>
       <Footer />
+      <Toaster />
     </div>
   </Providers>,
 )
